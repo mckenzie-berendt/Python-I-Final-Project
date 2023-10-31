@@ -1,0 +1,41 @@
+greeting() ::
+input needs '1', '2', 'q' or 'Q' as response -> use while (not in) [acceptable responses list] to check if one of these four responses were inputted -> if not the program will keep looping to ask for the input again. Also uses .strip() to remove any whitespace incase the user inputted a correct value but with a space. 
+
+
+OPTION 1 FUNCTIONS
+
+get_manual_entry_x() & get_y_values() ::
+the number of x-axis points and y-axis points needs to be equal -> to ensure that a user doesn't input 3 x-points and 4 y-points (for example), the get_manual_entry_x() function first asks how many datapoints the user wants to enter. This value (data_points) is then used to set a loop where the user is prompted to enter a numeric datapoint for each x-point - the loop ends as soon as the data_points value is reached; therefore the user cannot enter more or less datapoints then already specified. The pre-specified data_points value is then used again while looping though input for corresponding y-values to ensure that there are a correspoding number of x and y values. Further x- and y-points are cross-referenced to ensure that they are numeric and .strip() is used to ensure there is no whitespace. 
+Chose to allow whole numbers from 2 to 10 as limits of reasonable_number_datapoints because the chart needs to have atleast 2 datapoints to show line style and limit how many times the function has to loop through asking for datapoint inputs. 
+
+
+get_chart_title() ::
+uses while not in [acceptable responses list] to ensure that the user only enters y, Y, n, or N - otherwise the user is prompted for the input again. 
+Uses .strip() &  while len(plot_title) < 1:   
+to ensure that the user enters a title atleast one character in length. 
+
+
+get_x_axis_label() & get_y_axis_label()::
+uses while x- y-label not in [acceptable responses list] to ensure that the user only enters y, Y, n, or N - otherwise the user is prompted for the input again. 
+Uses .strip() &  while len(plot_title) < 1:   
+to ensure that the user enters an x- and y-axis label that is atleast one character in length.
+
+
+
+get_line_style() && get_maker_style() ::
+These functions are the same with different variables. Each function uses while not in [acceptable responses list] twice once for the Y/N input and again for the numeric input.
+
+
+OPTION 2 FUNCTIONS
+
+
+get_file_name() ::
+Uses .strip() to ensure user doesn't accidentally input extra spaces. 
+The file is already created as 'exampledata.txt' so function cross references the user's input to  ensure that is equals this. 
+
+
+config_x_values() && config_y_values() ::
+x and y lines from exampledata.txt need to be converted to a list using .split(", ") in get_file_values -> when doing this last value of each line returns with '\n' to parse out just the numerical data, these 2 functions use a nested loop to evaluate each individual character and determine if it is a digit -> digits are then concatenated and appending back into a list to be used later as plotting values. 
+
+config_linevalue() & config_markervalue()::
+if a value is put into exampledata.txt that does not correspond to the numerical choice of 1-4 and 1-5 respectively the marker and line style with default to circle and line respectively. 
